@@ -1,40 +1,39 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Blog, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  firstName: "Saif",
+  lastName: "Malik",
+  name: `Saif Malik`,
+  role: "Software Engineer",
+  avatar: "/images/avatar.jpeg",
+  email: "official.saifmalik@gmail.com",
+  location: "Asia/Kolkata",
+  languages: ["English", "Hindi"],
 };
 
+// TODO: need to setup subscription
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/saif-malik-01",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/saif-malik-877321206/",
   },
   {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    name: "Leetcode",
+    icon: "leetcode",
+    link: "https://leetcode.com/u/pixei/",
   },
   {
     name: "Email",
@@ -49,30 +48,24 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Software Engineer Building Real-World Impact with Code</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Quik - CDN</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/quik-cdn",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at{" "}
-      <Logo
-        dark
-        icon="/trademarks/wordmark-dark.svg"
-        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
-      />
-      , where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      Building scalable, high-impact apps that users love plus passion projects
+      that solve real problems.
     </>
   ),
 };
@@ -91,59 +84,68 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.com/saif-malik-ovqayw",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        I believe in first principle thinking, and I love challenges where it
+        solves the real purpose, where I learn, grow, contribute.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Aaizel Technologies Pvt. Ltd",
+        timeframe: "2025 - Present",
+        role: "Software Engineer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Teck Stack: Kafka, WebSockets, OAuth 2.0, Node.js, Redis, REST APIs,
+            Docker, PostgreSQL.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Optimized News Analytics backend by enhancing Kafka AI consumer
+            service with batching and connection pooling, improving processing
+            throughput by 9%.
+          </>,
+          <>
+            Developed a high-performance News Socket Service handling 100+
+            concurrent connections with 1K+ messages/sec throughput.
+          </>,
+          <>
+            Implemented an SSO service using OAuth 2.0, enabling single sign-on
+            across all company products and increasing user adoption by 24%.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Fuelcab India",
+        timeframe: "2024 - 2025",
+        role: "Software Engineer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Tech Stack: Node.js, REST APIs, Prometheus, Grafana, Testing, Redis,
+            PostgreSQL, Docker.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Developed Fuel Booking REST API for company products, supporting
+            integration with other services and used by 2K+ beta users.
+          </>,
+          <>
+            Integrated Prometheus and Grafana to add load metrics to the
+            authentication service, improving issue detection and system
+            monitoring.
+          </>,
+          <>
+            Implemented unit tests for all authentication REST API routes and
+            performed end-to-end integration testing.
           </>,
         ],
         images: [],
@@ -155,12 +157,8 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "GBPIET",
+        description: <>Computer Science & Engineering (AI&ML)</>,
       },
     ],
   },
@@ -169,41 +167,67 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
-        ),
+        title: "Languages",
+        description: <>Have work in vast languages.</>,
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "Python",
+            icon: "python",
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "C++",
+            icon: "cpp",
           },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
-        ),
-        tags: [
           {
             name: "JavaScript",
             icon: "javascript",
+          },
+          {
+            name: "SQL",
+            icon: "sql",
+          },
+          {
+            name: "Java",
+            icon: "java",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Frameworks",
+        description: <>Building next gen apps with advanced frameworks.</>,
+        tags: [
+          {
+            name: "NodeJS",
+            icon: "nodejs",
+          },
+          {
+            name: "Expressjs",
+            icon: "expressjs",
+          },
+          {
+            name: "Django",
+            icon: "django",
+          },
+          {
+            name: "Sprint boot",
+            icon: "springboot",
+          },
+          {
+            name: "Nestjs",
+            icon: "nestjs",
+          },
+          {
+            name: "Reactjs",
+            icon: "reactjs",
+          },
+          {
+            name: "React Native",
+            icon: "reactnative",
+          },
+          {
+            name: "Jest",
+            icon: "jest",
           },
           {
             name: "Next.js",
@@ -214,16 +238,76 @@ const about: About = {
             icon: "supabase",
           },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
+        images: [],
+      },
+      {
+        title: "Tools",
+        description: (
+          <>Great tools provide realibility and make system scalable.</>
+        ),
+        tags: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "Kubernetes",
+            icon: "kubernetes",
+          },
+          {
+            name: "Docker",
+            icon: "docker",
+          },
+          {
+            name: "Kafka",
+            icon: "kafka",
+          },
+          {
+            name: "Prometheus",
+            icon: "prometheus",
+          },
+          {
+            name: "Grafana",
+            icon: "grafana",
+          },
+          {
+            name: "Prefect",
+            icon: "prefect",
+          },
+          {
+            name: "GIT",
+            icon: "git",
+          },
+          {
+            name: "GraphQL",
+            icon: "graphqL",
+          },
+          {
+            name: "MongoDB",
+            icon: "mongodb",
+          },
+          {
+            name: "PostgreSQL",
+            icon: "postgresql",
+          },
+          {
+            name: "Redis",
+            icon: "redis",
           },
         ],
-      },  
+        images: [],
+      },
+      {
+        title: "Platforms",
+        description: <>Where the magic happends.</>,
+        tags: [
+          {
+            name: "AWS",
+            icon: "aws",
+          },
+          {
+            name: "GCP",
+            icon: "gcp",
+          },
+        ],
+        images: [],
+      },
     ],
   },
 };
@@ -233,8 +317,6 @@ const blog: Blog = {
   label: "Blog",
   title: "Writing about design and tech...",
   description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work: Work = {
@@ -242,59 +324,6 @@ const work: Work = {
   label: "Work",
   title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
 };
 
-const gallery: Gallery = {
-  path: "/gallery",
-  label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
-};
-
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work };
