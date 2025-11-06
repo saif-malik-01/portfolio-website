@@ -1,0 +1,119 @@
+---
+title: "Automating Design Handovers with a Figma to Code Pipeline"
+publishedAt: "2025-10-01"
+summary: "A custom Content Delivery Network (CDN) designed to serve static assets — images, JS/CSS, and video segments — with low latency, high availability, and edge caching."
+images:
+  - "/images/projects/project-02/ss-01.png"
+team:
+  - name: "Saif Malik"
+    role: "Software Engineer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/saif-malik-877321206/"
+link: "https://github.com/saif-malik-01/cdn"
+tags: ["System Design", "Networking", "DevOps", "Cloud Infrastructure"]
+---
+
+# CDN System Design
+
+A production-grade **Content Delivery Network (CDN)** built from the ground up to deliver static assets — images, JavaScript, CSS, and media — with **low latency**, **high availability**, and **global caching**.
+
+## 🧭 Goals & Scope
+
+- Serve static assets (images, JS, CSS, video segments) efficiently  
+- Global edge presence (multiple POPs)  
+- Caching layers (in-memory + SSD) with invalidation API  
+- HTTPS + HTTP/2 support and QUIC-ready design  
+- Metrics, logging, autoscaling, and DDoS protection  
+
+## 🏗️ High-Level Architecture
+
+**Core Components**
+
+1. **Control Plane** – Configuration, purge API, certificate manager, and monitoring  
+2. **Edge Servers (POPs)** – Handle caching, TLS termination, and rate limits  
+3. **Origin / Origin Shield** – Protects backend servers from load bursts  
+4. **Geo-DNS Routing** – Directs users to nearest healthy POP  
+5. **Observability Layer** – Metrics (Prometheus), Logs (Elastic/Loki), Dashboards (Grafana)
+
+```text
++-----------------+
+|   Control Plane |
++-----------------+
+        |
++------------------------+
+|   Global DNS / GeoDNS  |
++------------------------+
+   |      |      |      |
+ EdgeA  EdgeB  EdgeC  EdgeD
+ (cache)(cache)(cache)(cache)
+````
+
+Each edge server handles caching, TLS termination, rate limiting, and metrics export, while the Control Plane manages configuration and invalidation across all POPs.
+
+## ⚙️ Core Features
+
+### 🧩 Caching System
+
+* Hybrid **RAM + SSD** caching with **LRU eviction**
+* Cache key: `method:host:normalized_path:sorted_query`
+* Supports `stale-while-revalidate` and `stale-if-error`
+* Honors `Cache-Control`, `ETag`, and `Last-Modified` headers
+
+### 🌐 Origin Fetching
+
+* Uses **conditional GET** (`ETag`, `If-Modified-Since`)
+* **Request coalescing** prevents duplicate origin fetches
+* Connection pooling and retry with exponential backoff
+
+### 🔒 Security
+
+* Edge-level **rate limiting** per IP & API key
+* Basic **WAF** rules and **DDoS anomaly detection**
+* **TLS termination** with automatic certificate rotation (ACME)
+
+### 📊 Observability
+
+* Prometheus metrics endpoint (`/metrics`)
+* Structured JSON logging to centralized storage
+* Grafana dashboards and alerting on performance metrics
+
+## 📡 Deployment & Operations
+
+* Deployed via **Docker** or **Kubernetes**
+* Rolling updates and blue/green deployments
+* Automated CI/CD pipeline (Git → Build → Deploy)
+* Local load balancers per POP (Nginx or built-in)
+* Autoscaling and health checks via control plane
+
+
+## 🧪 Testing & Reliability
+
+* **Unit tests** for cache correctness and TTL handling
+* **Integration tests** for cache invalidation and origin fallback
+* **Load testing** using `wrk2`, `vegeta`, and `hey`
+* **Chaos testing**: origin failure simulation, high-latency scenarios
+
+## 🗺️ Roadmap (v2)
+
+* Anycast (BGP) routing for faster global access
+* Hierarchical caching (regional parent POPs)
+* Full HTTP/3 (QUIC) support
+* Smart prefetching and ML-driven cache warming
+* Edge compute capabilities (Lambda@Edge-style)
+
+## 🔐 Security & Privacy
+
+* **Signed URLs** or token-based auth for private assets
+* **TLS key rotation** and secure key storage
+* **Sensitive header sanitization** (no `Authorization` or `Cookie` in logs)
+
+## 🏁 Outcome
+
+A fully functional **CDN prototype** capable of serving millions of requests per day across multiple global POPs, with:
+
+* Optimized caching for low-latency delivery
+* Real-time metrics and logs for monitoring
+* Secure and fault-tolerant infrastructure
+* Modular design ready for scaling and future edge compute features
+
+> **Built for reliability, scalability, and speed — this CDN architecture demonstrates full-stack systems design applied to distributed infrastructure.**
