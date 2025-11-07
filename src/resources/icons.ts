@@ -56,6 +56,7 @@ import {
 import { CgCPlusPlus } from "react-icons/cg";
 import {
   DiAws,
+  DiCss3,
   DiDjango,
   DiDocker,
   DiGoogleCloudPlatform,
@@ -68,8 +69,13 @@ import {
 import { GrGraphQl, GrKubernetes, GrReactjs } from "react-icons/gr";
 import { TbBrandReactNative } from "react-icons/tb";
 import { MdQueue } from "react-icons/md";
+import { TfiHtml5 } from "react-icons/tfi";
+import { RiTailwindCssFill } from "react-icons/ri";
 
 export const iconLibrary: Record<string, IconType> = {
+  html:TfiHtml5,
+  css:DiCss3,
+  tailwind:RiTailwindCssFill,
   cpp: CgCPlusPlus,
   java: DiJava,
   python: DiPython,

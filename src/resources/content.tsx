@@ -190,6 +190,14 @@ const about: About = {
             name: "Java",
             icon: "java",
           },
+          {
+            name: "HTML",
+            icon: "html",
+          },
+          {
+            name: "CSS",
+            icon: "css",
+          },
         ],
         images: [],
       },
@@ -216,6 +224,10 @@ const about: About = {
           {
             name: "Nestjs",
             icon: "nestjs",
+          },
+          {
+            name: "Tailwind CSS",
+            icon: "tailwind",
           },
           {
             name: "Reactjs",
